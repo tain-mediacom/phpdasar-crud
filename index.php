@@ -1,7 +1,9 @@
 <?php
 
 require "functions.php";
-$dataSiswa = query("SELECT * FROM data_rpl");
+
+$dbtable = "data_rpl";
+$dataSiswa = query("SELECT * FROM $dbtable");
 
 ?>
 

@@ -1,9 +1,11 @@
 <?php
     // koneksi
     require "functions.php";
+    $dbtable = "data_rpl";
 
+    // query data
     $id = $_GET["id"];
-    $dataSiswa = query("SELECT * FROM data_rpl WHERE id=$id")[0];
+    $dataSiswa = query("SELECT * FROM $dbtable WHERE id=$id")[0];
 
     
     // edit data
@@ -59,7 +61,7 @@
                     </div>
                     <div class="foto">
                         <label for="foto">Foto</label>
-                        <input type="text" id="foto" name="foto" required value="<?= $dataSiswa["gambar"]; ?>">
+                        <input type="text" id="foto" name="gambar" required value="<?= $dataSiswa["gambar"]; ?>">
                     </div>
                     <button type="submit" name="edit">Edit Data</button>
                 </form>

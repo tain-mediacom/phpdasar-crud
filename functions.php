@@ -1,11 +1,19 @@
 <?php
 
-// koneksi db
-$db = mysqli_connect("localhost", "root", "", "dbrpl");
+// connection db
+$host = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "dbrpl";
+$dbtabel = "data_rpl";
+
+$db = mysqli_connect($host, $username, $password, $dbname);
 
 // tampilkan data
 function query($data) {
+    // connection
     global $db;
+
     $result = mysqli_query($db, $data);
     $rows = [];
     while($row = mysqli_fetch_assoc($result)) {
@@ -16,15 +24,18 @@ function query($data) {
 
 // tambah data
 function tambah($data) {
+    // connection
     global $db;
+    global $dbtabel;
 
     // ambil datanya
     $nama = htmlspecialchars($data["nama"]);
     $jurusan = htmlspecialchars($data["jurusan"]);
     $sekolah = htmlspecialchars($data["sekolah"]);
     $foto = htmlspecialchars($data["foto"]);
+
     // query data
-    $query = "INSERT INTO data_rpl VALUES('', '$nama', '$jurusan', '$sekolah', '$foto')";
+    $query = "INSERT INTO $dbtabel VALUES('', '$nama', '$jurusan', '$sekolah', '$foto')";
     mysqli_query($db, $query);
 
     return mysqli_affected_rows($db);
@@ -32,7 +43,9 @@ function tambah($data) {
 
 // edit data
 function edit($data) {
+    // connection
     global $db;
+    global $dbtabel;
 
     // ambil datanya
     $id = $data["id"];
@@ -41,8 +54,8 @@ function edit($data) {
     $sekolah = htmlspecialchars($data["sekolah"]);
     $gambar = htmlspecialchars($data["gambar"]);
 
-    $query = "UPDATE data_rpl SET nama='$nama', jurusan='$jurusan', sekolah='$sekolah', gambar='$gambar' WHERE id=$id";
-
+    // query
+    $query = "UPDATE $dbtabel SET nama='$nama', jurusan='$jurusan', sekolah='$sekolah', gambar='$gambar' WHERE id=$id";
     mysqli_query($db, $query);
 
     return mysqli_affected_rows($db);
@@ -50,9 +63,12 @@ function edit($data) {
 
 // hapus data
 function hapus($id) {
+    // connection
      global $db;
+     global $dbtabel;
 
-     $query = "DELETE FROM data_rpl WHERE id=$id";
+    //  query
+     $query = "DELETE FROM $dbtabel WHERE id=$id";
      mysqli_query($db, $query);
 
       return mysqli_affected_rows($db);
