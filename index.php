@@ -1,7 +1,6 @@
 <?php
 
 require "functions.php";
-
 $dataSiswa = query();
 
 ?>
@@ -36,7 +35,7 @@ $dataSiswa = query();
             <td><?= $data["nama"]; ?></td>
             <td><?= $data["jurusan"]; ?></td>
             <td><?= $data["sekolah"]; ?></th>
-            <td><?= $data["gambar"]; ?></th>
+            <td><img style="width: 80px;" src="img/<?= $data["gambar"]; ?>" alt="foto"></th>
             <td><a href="edit.php?id=<?= $data["id"]; ?>">Edit</a> | <a onclick="return confirm('Yakin Hapus Data !')" href="hapus.php?id=<?= $data["id"]; ?>" style="background-color: red;">Hapus</a></td>
         </tr>
         <?php endforeach; ?>

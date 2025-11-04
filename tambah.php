@@ -37,7 +37,7 @@
     <div class="body">
         <div class="form">
                 <h3>Tambah Data</h1>
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="nama">
                         <label for="nama">Nama</label>
                         <input type="text" id="nama" name="nama" placeholder="nama lengkap">
@@ -52,7 +52,7 @@
                     </div>
                     <div class="foto">
                         <label for="foto">Foto</label>
-                        <input type="text" id="foto" name="foto" placeholder="jhon.jpg">
+                        <input type="file" id="foto" name="foto" placeholder="jhon.jpg">
                     </div>
                     <button type="submit" name="simpan">Simpan Data</button>
                 </form>
