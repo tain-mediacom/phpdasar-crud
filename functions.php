@@ -10,11 +10,29 @@ $dbtabel = "data_rpl";
 $db = mysqli_connect($host, $username, $password, $dbname);
 
 // tampilkan data
-function query($data) {
+function query() {
     // connection
     global $db;
+    global $dbtabel;
 
-    $result = mysqli_query($db, $data);
+    $query = "SELECT * FROM $dbtabel";
+
+    $result = mysqli_query($db, $query);
+    $rows = [];
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+function queryById($id) {
+    // connection
+    global $db;
+    global $dbtabel;
+
+    $query = "SELECT * FROM $dbtabel WHERE id=$id";
+
+    $result = mysqli_query($db, $query);
     $rows = [];
     while($row = mysqli_fetch_assoc($result)) {
         $rows[] = $row;

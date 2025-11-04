@@ -1,11 +1,10 @@
 <?php
     // koneksi
     require "functions.php";
-    $dbtable = "data_rpl";
 
     // query data
     $id = $_GET["id"];
-    $dataSiswa = query("SELECT * FROM $dbtable WHERE id=$id")[0];
+    $dataSiswa = queryById($id)[0];
 
     
     // edit data

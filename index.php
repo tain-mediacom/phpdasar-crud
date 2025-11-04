@@ -2,8 +2,7 @@
 
 require "functions.php";
 
-$dbtable = "data_rpl";
-$dataSiswa = query("SELECT * FROM $dbtable");
+$dataSiswa = query();
 
 ?>
 
